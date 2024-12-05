@@ -1,1 +1,1 @@
-['num__Selling_Price', 'num__Owner', 'cat__Car_Name', 'poly__Year^2']
+['num__Selling_Price', 'cat__Car_Name', 'poly__Year', 'poly__Year^2']

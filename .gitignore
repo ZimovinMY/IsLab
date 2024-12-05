@@ -3,3 +3,7 @@
 .my_venv*
 mlflow/mlartifacts
 mlflow/mlruns.db
+mlartifacts
+mlruns.db
+
+

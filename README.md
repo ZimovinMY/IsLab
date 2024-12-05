@@ -265,3 +265,24 @@ sh ./mlflow/start_mlflow.sh
 
 Далее модель, показавшая наилучший результат была обучена на всей выборке и залогирована в mlflow с тегом Prod:1. Run_id данной модели - a342c08f5a134a228e5e21d3cf010502
 
+## Описание сервиса
+- ml_service - папка с сервисом
+- models - папка с обученной моделью
+## Команды для создания образа и запуска контейнера
+```
+docker build . --tag car_price__model:1
+docker run -p 8001:8000 -v $(pwd)/../models:/models car_price_model:1
+```
+## Пример тела запроса
+```
+{
+  "Car_Name": "Toyota Corolla",
+  "Year": 2015,
+  "Selling_Price": 8.5,
+  "Driven_kms": 45000,
+  "Fuel_Type": "Petrol",
+  "Selling_type": "Dealer",
+  "Transmission": "Manual",
+  "Owner": 1
+}
+```
