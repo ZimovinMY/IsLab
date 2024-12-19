@@ -12,7 +12,7 @@ instrumentator.instrument(app).expose(app)
 prediction_metric = Histogram(
     'prediction_metric_histogram',
     'histogram of predicted prices',
-    buckets=(100000, 1000000, 3000000, 5000000, 15000000, 50000000, 100000000)
+    buckets=(1, 5, 10, 15, 25, 50, 100)
 )
 
 @app.get('/')
@@ -22,6 +22,7 @@ def root_dir():
 @app.post('/api/prediction')
 def make_prediction(id: int, item_features: dict):
     prediction = app.handler.predict(item_features)
+    prediction_metric.observe(prediction)
     return ({
              'car_id': id,
              'price': prediction
